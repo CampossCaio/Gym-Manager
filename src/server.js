@@ -13,7 +13,7 @@ app.use(Routes);
 
 app.set("view engine", "njk");
 
-nunjuck.configure("views", {
+nunjuck.configure("src/app/views", {
     express: app,
     autoescape: false,
     noCache: true,

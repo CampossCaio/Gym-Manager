@@ -2,7 +2,8 @@
 
 :root {
     --primary-color: #7159c1;
-    --secondary-color: #F7df1e;
+    --secondary-color: #fff;
+    --tertiary-color: #F7df1e;
 }
 
 * {
@@ -12,17 +13,87 @@
 }
 
 body {
-    background-color: var(--primary-color);
+    background: var(--primary-color);
     font-family: 'Roboto', sans-serif;
 }
 
+
 header {
-    background-color: white;
+    background-color: var(--secondary-color);
     width: 100%;
     padding: 32px;
     text-align: center;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
+
+.toggle-switch {
+  top: 30px;
+  width: 50px;
+  position: absolute;
+  right: 100px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 6px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
 
 .links {
     font-size: 22px;
@@ -64,7 +135,7 @@ header {
 
 /* === CARD === */
 .card {
-    background-color: white;
+    background-color: var(--secondary-color);
     width: 800px;
     min-height: 400px;
 
@@ -134,7 +205,7 @@ header {
 
 .details .item span {
     padding: 8px 16px;
-    background-color: var(--secondary-color);
+    background-color: var(--tertiary-color);
     border-radius: 16px;
     color: #777;
     margin-right: 4px;
@@ -258,4 +329,63 @@ tbody tr td:last-child a,
 .table-container thead tr th:last-child,
 td:last-child {
     text-align: center;
+}
+
+/* FILTERS */
+.table-container .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.table-container .header a {
+    margin: 0;
+    width: 120px;
+}
+
+.table-container .header form {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    align-items: center;
+    grid-gap: 8px;
+}
+
+.table-container .header form input {
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    box-sizing: border-box;
+}
+
+.table-container .header form button {
+    margin:0;
+}
+
+/*pagination*/
+.table-container {
+    display: grid;
+    grid-template: 64px 1fr 16px / 1fr;
+}
+
+.table-container .header {
+    margin: 0;
+    align-self: start;
+}
+
+.table-container .pagination {
+    margin: 0;
+    align-self: end;
+    justify-self: center;
+}
+
+.pagination a,
+.pagination apan {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: 16px;
+}
+
+.pagination a:hover {
+    filter: brightness(0.3);
+    border-bottom: 1px solid var(--primary-color);
 }
